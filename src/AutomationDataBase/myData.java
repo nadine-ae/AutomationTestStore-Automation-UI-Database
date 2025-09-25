@@ -28,27 +28,17 @@ public class myData {
 	int randomNumberForTheEmail1 = rand.nextInt(54789);
 	int randomNumberForTheEmail2 = rand.nextInt(5472);
 	int randomNumberForTheEmail3 = rand.nextInt(1600);
-	
 	int randomNumberForTheEmail = randomNumberForTheEmail1*randomNumberForTheEmail2 -randomNumberForTheEmail3; 
-	
 	String ExpectedTextforTheSignUp = "YOUR ACCOUNT HAS BEEN CREATED!";
-	
 	String TheLogoutMessage = "You have been logged off your account. It is now safe to leave the computer.";
-	
-	// The Data inside my Database
 	String CustomerFirstNameInDataBase;
 	String CustomerLastNameInDataBase;
 	String email;
 	String password = "123!@#P@ssw0rd";
-	// I declared the password here (hard coded) because we don't get it from the database
 	String CustomerCountryInDataBase;
-	
 	String address;
 	String PostalCode;
-	
 	String loginName;
-	
-
 	String WelcomeMessage = "Welcome back " +CustomerFirstNameInDataBase;
 
 }
