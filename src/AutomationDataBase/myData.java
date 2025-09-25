@@ -8,8 +8,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 
 public class myData {
-
-	// Global variables
 	
 	WebDriver driver = new EdgeDriver();
 
