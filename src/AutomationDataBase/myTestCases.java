@@ -29,7 +29,6 @@ public class myTestCases extends myData {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		
-		
 
 	}
 
@@ -62,28 +61,22 @@ public class myTestCases extends myData {
 		while (rs.next()) {
 
 			CustomerFirstNameInDataBase = rs.getString("contactFirstName").toString().trim();
-// 			the "contactFirstName" here is copied from the database column
 
 		    WelcomeMessage = "Welcome back " + CustomerFirstNameInDataBase; // recompute here
 
 			
 			CustomerLastNameInDataBase = rs.getString("contactLastName").toString().trim();
-// 			the "contactLastName" here is copied from the database column
 	
 			CustomerCountryInDataBase = rs.getString("country").toString().trim();
-// 			the "country" here is copied from the database column
 
 			address = rs.getString("addressLine1").toString().trim();
-//			the "addressLine1" here is copied from the database column			
 			
 			PostalCode = rs.getString("postalCode").toString().trim();
-//			the "postalCode" here is copied from the database column			
 
 			loginName = CustomerFirstNameInDataBase+CustomerLastNameInDataBase+randomNumberForTheEmail;
 			
 			
 			email = CustomerFirstNameInDataBase + CustomerLastNameInDataBase + randomNumberForTheEmail + "@gmail.com";
-			
 
 	}
 		
@@ -141,12 +134,8 @@ public class myTestCases extends myData {
 
 		Thread.sleep(2000);
 
-		// To Select State
-
 		mySelectElementForState.selectByIndex(1);
-		// In our database, there is no state for Spain, so we used index
 	
-		// Write Address
 		List<WebElement> AlltheStates = TheState.findElements(By.tagName("option"));
 
 		String theCity = AlltheStates.get(1).getText();
@@ -164,14 +153,11 @@ public class myTestCases extends myData {
 		WebElement AgreeCheckBox = driver.findElement(By.id("AccountFrm_agree"));
 
 		WebElement ContinueButton = driver.findElement(By.xpath("//button[@title='Continue']"));
-//
-//		// Actions
+
 		FirstName.sendKeys(CustomerFirstNameInDataBase);
 		LastName.sendKeys(CustomerLastNameInDataBase);
 		Email.sendKeys(email);
-//
-//		Telephone.sendKeys("Telephone");
-//		Fax.sendKeys(TheFaxNumber);
+
 		AddressOne.sendKeys(address);
 
 		TheCityInput.sendKeys(theCity);
@@ -192,8 +178,6 @@ public class myTestCases extends myData {
 
 		String ActualSignUpMessage = driver.findElement(By.className("maintext")).getText();
 
-//		// This is a test case that compares the actual result with the expected result
-//		// and works like the if
 		Assert.assertEquals(ActualSignUpMessage, ExpectedTextforTheSignUp);
 
 
@@ -204,11 +188,7 @@ public class myTestCases extends myData {
 
 		Thread.sleep(3000);
 
-		// Link text Method
 		driver.findElement(By.linkText("Logoff")).click();
-
-		// Partial link text method
-		//driver.findElement(By.partialLinkText("Logo")).click();
 
 		System.out.println(driver.getPageSource());
 
@@ -225,7 +205,6 @@ public class myTestCases extends myData {
 		Thread.sleep(2000);
 		
 		driver.findElement(By.linkText("Login or register")).click();
-		
 
 		WebElement LoginNameInput = driver.findElement(By.id("loginFrm_loginname"));
 
@@ -241,8 +220,6 @@ public class myTestCases extends myData {
 
 		LoginButton.click();
 
-		// Now we are logged in
-
 		boolean ActualValue = driver.getPageSource().contains(WelcomeMessage);
 		boolean ExpectedValue = true;
 
@@ -257,8 +234,8 @@ public class myTestCases extends myData {
 
 		Random rand = new Random();
 
-		for (int i = 0; i < 10; i++) { // max 10 attempts here we can increase
-			// pick a random item and open it
+		for (int i = 0; i < 10; i++) { 
+			
 			List<WebElement> items = driver.findElements(By.className("prdocutname"));
 			int randomItem = rand.nextInt(items.size());
 			items.get(randomItem).click();
@@ -273,7 +250,7 @@ public class myTestCases extends myData {
 				return; // success
 			}
 
-			driver.navigate().back(); // try again
+			driver.navigate().back();
 		}
 
 		throw new RuntimeException("No in-stock item found after 10 attempts.");
@@ -284,8 +261,6 @@ public class myTestCases extends myData {
 	@AfterTest
 
 	public void AfterMyTest() {
-
-		//driver.close();
 
 		driver.quit();
 	}
