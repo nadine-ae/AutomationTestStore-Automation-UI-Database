@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -28,7 +27,6 @@ public class myTestCases extends myData {
 		driver.manage().window().maximize();
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		
 
 	}
 
@@ -62,9 +60,8 @@ public class myTestCases extends myData {
 
 			CustomerFirstNameInDataBase = rs.getString("contactFirstName").toString().trim();
 
-		    WelcomeMessage = "Welcome back " + CustomerFirstNameInDataBase; // recompute here
+		    WelcomeMessage = "Welcome back " + CustomerFirstNameInDataBase; 
 
-			
 			CustomerLastNameInDataBase = rs.getString("contactLastName").toString().trim();
 	
 			CustomerCountryInDataBase = rs.getString("country").toString().trim();
@@ -74,7 +71,6 @@ public class myTestCases extends myData {
 			PostalCode = rs.getString("postalCode").toString().trim();
 
 			loginName = CustomerFirstNameInDataBase+CustomerLastNameInDataBase+randomNumberForTheEmail;
-			
 			
 			email = CustomerFirstNameInDataBase + CustomerLastNameInDataBase + randomNumberForTheEmail + "@gmail.com";
 
@@ -114,7 +110,6 @@ public class myTestCases extends myData {
 		
 		driver.navigate().to(SignupPage);
 
-		// WebElements
 		WebElement FirstName = driver.findElement(By.id("AccountFrm_firstname"));
 
 		WebElement LastName = driver.findElement(By.id("AccountFrm_lastname"));
@@ -247,7 +242,7 @@ public class myTestCases extends myData {
 			if (!outOfStock && !blockedProduct) {
 				driver.findElement(By.cssSelector(".cart")).click();
 				System.out.println("Added to cart: " + driver.getCurrentUrl());
-				return; // success
+				return; 
 			}
 
 			driver.navigate().back();
